@@ -1,29 +1,47 @@
 package model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-public class Meal {
-    private Integer id;
-    private String name;
+@Entity
+@Table(name = "meals")
+public class Meal extends AbstractNamedEntity {
+
+    @Column(name = "price", nullable = false)
     private Float price;
+
+    @Column(name = "description", nullable = false)
     private String description;
-    private int restaurantId;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
     private LocalDateTime dateTime;
 
-    public int getId() {
-        return id;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Meal(Integer id, String name, Float price, String description, Restaurant restaurant, LocalDateTime dateTime) {
+        super(id, name);
+        this.price = price;
+        this.description = description;
+        this.restaurant = restaurant;
+        this.dateTime = dateTime;
     }
 
-    public String getName() {
-        return name;
+    public Meal(Float price, String description, Restaurant restaurant, LocalDateTime dateTime) {
+        this.price = price;
+        this.description = description;
+        this.restaurant = restaurant;
+        this.dateTime = dateTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Meal(Integer id, String name) {
+        super(id, name);
+    }
+
+    public Meal() {
     }
 
     public Float getPrice() {
@@ -34,12 +52,16 @@ public class Meal {
         this.price = price;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public LocalDateTime getDateTime() {
@@ -48,13 +70,5 @@ public class Meal {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

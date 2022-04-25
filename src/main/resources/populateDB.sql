@@ -19,7 +19,7 @@ INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 100000),
        ('ADMIN', 100001);
 
-INSERT INTO RESTAURANTS (NAME, DESCRIPTION)
+INSERT INTO restaurants (NAME, DESCRIPTION)
 VALUES ('Метрополь', 'Описание1'),
        ('Макдональдс', 'Описание2'),
        ('Югославия', 'Описание3');
@@ -37,6 +37,6 @@ VALUES ('Еда1', 39.44, 'Описание1', '2022-03-03', 100003),
        ('Еда102', 29.44, 'Описание9', '2022-03-04', 100003),
        ('Еда103', 50.24, 'Описание10', '2022-03-04', 100003);
 
-INSERT INTO VOTES (USER_ID, VOTE_DATE, RESTAURANT_ID)
+INSERT INTO votes (USER_ID, VOTE_DATE, RESTAURANT_ID)
 VALUES (100000, '2022-03-03 12:51:00', 100003),
        (100000, '2022-03-04 10:51:00', 100003);
